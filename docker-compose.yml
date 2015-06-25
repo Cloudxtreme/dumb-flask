@@ -1,6 +1,43 @@
-web:
+flask0:
   build: .
   ports:
-    - "80:5000"
+    - "5000:5000"
   volumes:
     - .:/code
+  environment:
+    - BACKEND=flask0
+
+flask1:
+  build: .
+  ports:
+    - "5001:5000"
+  volumes:
+    - .:/code
+  environment:
+    - BACKEND=flask1
+
+flask2:
+  build: .
+  ports:
+    - "5002:5000"
+  volumes:
+    - .:/code
+  environment:
+    - BACKEND=flask2
+
+flask3:
+  build: .
+  ports:
+    - "5003:5000"
+  volumes:
+    - .:/code
+  environment:
+    - BACKEND=flask3
+
+haproxy:
+  image: dockerfile/haproxy
+  volumes:
+    - haproxy:/haproxy-override
+  ports:
+    - "80:80"
+    - "70:70"
